@@ -1,4 +1,5 @@
 import MarqueeText from "react-marquee-text";
+import Link from "next/link";
 import "react-marquee-text/dist/styles.css";
 
 interface NewsHeadline {
@@ -23,7 +24,7 @@ const Marquee = async () => {
   return (
     <section
       aria-label="সর্বশেষ সংবাদ"
-      className="container font-bold mx-auto px-3 py-3 sm:px-6 lg:px-8"
+      className="bg-white px-3 pb-3 sm:px-6 lg:px-8"
     >
       <div className="flex overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
         {/* Breaking News Label */}
@@ -43,13 +44,15 @@ const Marquee = async () => {
           <div className="w-full py-3">
             <MarqueeText direction="right" duration={25}>
               {headlines.map((headline) => (
-                <span
+                <Link
                   key={headline.id}
-                  className="mx-4 inline-flex items-center gap-3 text-sm font-medium text-gray-700 transition-colors hover:text-red-600 sm:mx-6 sm:text-base"
+                  href={`/news/${headline.id}`}
+                  aria-label={`সম্পূর্ণ সংবাদ পড়ুন: ${headline.title}`}
+                  className="mx-4 inline-flex items-center gap-3 text-sm font-medium text-gray-700 transition-colors hover:text-red-700 hover:underline hover:decoration-red-600 hover:underline-offset-4 focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-red-600 sm:mx-6 sm:text-base"
                 >
                   <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-red-600" />
                   <span>{headline.title}</span>
-                </span>
+                </Link>
               ))}
             </MarqueeText>
           </div>

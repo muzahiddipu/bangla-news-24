@@ -59,7 +59,7 @@ const Navlinks = async () => {
               {newNavs.map((n) => (
                 <li key={n.slug} className="shrink-0">
                   <Link
-                    href={n.slug}
+                    href={`/category/${n.slug}`}
                     className="inline-flex min-h-11 items-center rounded-xl px-3 text-sm font-semibold text-gray-600 transition-colors duration-200 hover:bg-red-50 hover:text-red-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600 sm:px-4"
                   >
                     {n.title}

@@ -1,18 +1,8 @@
-"use client";
-
-import Image from "next/image";
-
-interface NewsItem {
-  id: string | number;
-  title: string;
-  imageUrl: string;
-  category: string;
-  description: string;
-}
+import NewsCard, { type NewsCardArticle } from "./NewsCard";
 
 interface NewsSection {
   title: string;
-  articles: NewsItem[];
+  articles: NewsCardArticle[];
 }
 
 interface OtherNewsProps {
@@ -39,52 +29,10 @@ const OtherNews = ({ otherNewsInfo }: OtherNewsProps) => {
           {section.articles.length > 0 ? (
             <div className="grid grid-cols-1 items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:gap-6">
               {section.articles.map((article) => (
-                <article
+                <NewsCard
                   key={article.id}
-                  className="group flex h-full flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-red-100 hover:shadow-xl"
-                >
-                  {/* Article Image */}
-                  <div className="relative aspect-[16/9] overflow-hidden bg-gray-100">
-                    <Image
-                      src={article.imageUrl}
-                      alt={article.title}
-                      fill
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
-
-                    {/* Image Gradient */}
-                    <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/40 to-transparent opacity-80" />
-
-                    {/* Category Badge */}
-                    <span className="absolute bottom-3 left-3 rounded-md bg-red-600 px-3 py-1.5 text-xs font-bold text-white shadow-md">
-                      {article.category}
-                    </span>
-                  </div>
-
-                  {/* Article Content */}
-                  <div className="flex flex-1 flex-col p-5">
-                    <h3 className="line-clamp-3 text-lg font-extrabold leading-7 text-gray-900 transition-colors duration-200 group-hover:text-red-600">
-                      {article.title}
-                    </h3>
-
-                    <p className="mt-3 line-clamp-3 text-sm leading-7 text-gray-600">
-                      {article.description}
-                    </p>
-
-                    {/* Read More */}
-                    <div className="mt-auto flex items-center gap-2 pt-5 text-sm font-bold text-red-600">
-                      <span>বিস্তারিত পড়ুন</span>
-
-                      <span
-                        aria-hidden="true"
-                        className="transition-transform duration-200 group-hover:translate-x-1"
-                      >
-                        →
-                      </span>
-                    </div>
-                  </div>
-                </article>
+                  article={article}
+                />
               ))}
             </div>
           ) : (

@@ -10,7 +10,7 @@ const Header = () => {
   });
 
   return (
-    <header className="sticky top-0 z-50 border-b border-gray-200 bg-white/95 shadow-sm backdrop-blur-md">
+    <header className="border-b border-gray-200 bg-white/95 shadow-sm backdrop-blur-md">
       <div className="container mx-auto px-3 sm:px-6 lg:px-8">
         <div className="flex min-h-20 items-center justify-between gap-4 py-3">
           {/* Logo and Brand */}
